@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import TelaInicial from "./componentes/telaInicial";
+import TelaIndicacoes from "./componentes/telaIndicacoes";
+import TelaSobre from "./componentes/telaSobre";
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <NavigationContainer>
+      <Drawer.Navigator headerMode='none'>
+        <Drawer.Screen name="Inicio" component={ TelaInicial } />
+        <Drawer.Screen name="Indicações" component={ TelaIndicacoes } />
+        <Drawer.Screen name="Sobre" component={ TelaSobre } />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  )
+};
